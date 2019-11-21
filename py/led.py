@@ -27,4 +27,5 @@ def led_init():
     print(dots)
 
 def led_loop():
-    pass
+    while True:
+        time.sleep(.05)
