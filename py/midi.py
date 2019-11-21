@@ -38,7 +38,7 @@ class note:
 
 def keyboard_init():
     # for i in range (0, 87):
-    for i in range(0, 24):
+    for i in range(0, 25):
         KEYBOARD.append(note(i))
     print(KEYBOARD)
 

@@ -1,15 +1,15 @@
 import time
 import random
 
-import numby
+import numpy
 import board
 import adafruit_dotstar as dotstar
 import midi
 
-NOTE_OFF_COLOR = (255, 20, 147)
-NOTE_ON_COLOR = (147, 112, 219)
-ATTACK = 0.5
-RELEASE = 1.0
+NOTE_OFF_COLOR = (0, 0, 1)
+NOTE_ON_COLOR = (30, 30, 30)
+ATTACK = 1.0
+RELEASE = .5
 
 dots = dotstar.DotStar(board.SCK, board.MOSI, 25, brightness=1)
 
@@ -31,7 +31,7 @@ def led_init():
 
 
 def calc_color(starting_color, target_color, ratio):
-    return starting_color + ratio * numby.subtract(target_color, starting_color)
+    return numpy.int_(starting_color + ratio * numpy.subtract(target_color, starting_color))
 
 def update_colors():
     for key in midi.KEYBOARD:
@@ -43,4 +43,4 @@ def update_colors():
 def led_loop():
     while True:
         update_colors()
-        time.sleep(.05)
+        time.sleep(.01)
