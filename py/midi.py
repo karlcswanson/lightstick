@@ -1,5 +1,6 @@
 import mido
 
+import led
 
 KEYBOARD = []
 
@@ -12,13 +13,13 @@ class note:
 
     def note_on(self, velocity):
         self.velocity = velocity
-        # if self.note < 25:
-        #     dots[self.note] = color()
+        if self.note < 25:
+            led.dots[self.note] = led.color()
 
     def note_off(self):
         self.velocity = 0
-        # if self.note < 25:
-        #     dots[self.note] = (0, 0, 0)
+        if self.note < 25:
+            led.dots[self.note] = (0, 0, 0)
 
     def __repr__(self):
         return 'note: {} velocity: {}'.format(self.note, self.velocity)
@@ -29,12 +30,7 @@ def keyboard_init():
         KEYBOARD.append(note(i))
     print(KEYBOARD)
 
-    # n_dots = len(dots)
-    # for dot in range(n_dots):
-    #     dots[dot] = ( 0, 0, 0)
-
-    # time.sleep(.25)
-    # print(dots)
+    
 
 def midi_loop():  
     while True:
