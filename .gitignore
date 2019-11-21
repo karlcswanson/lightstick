@@ -1,0 +1,11 @@
+*.pyc
+*.DS_Store
+dist/*
+build/*
+.eggs/*
+node_modules/*
+package-lock.json
+.python-version
+static/fonts/*
+static/*.js*
+config.json

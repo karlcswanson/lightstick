@@ -3,6 +3,7 @@ import sys
 import json
 import logging
 import logging.handlers
+import argparse
 
 APPNAME = 'lightstick'
 
