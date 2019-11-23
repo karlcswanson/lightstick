@@ -5,7 +5,6 @@ import mido
 import osc
 
 import led
-import midi_output
 
 KEYBOARD = []
 
