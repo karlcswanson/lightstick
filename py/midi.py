@@ -28,6 +28,9 @@ class note:
 
 
     def ratio(self, atk_rel_time):
+        if atk_rel_time == 0:
+            return 1
+
         out = (time.time() - self.timestamp)/atk_rel_time
         if out > 1:
             return 1

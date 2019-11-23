@@ -13,19 +13,27 @@ class IndexHandler(web.RequestHandler):
     def get(self):
         self.render(config.app_dir("index.html"))
 
-# class JsonHandler(web.RequestHandler):
-#     def get(self):
-#         codecs = []
-#         for codec in jk_audio.audio_codecs:
-#             codecs.append(codec.codec_json())
-
-#         json_out = json.dumps({
-#             'codecs': codecs
-#         }, sort_keys=True, indent=4)
+class JsonHandler(web.RequestHandler):
+    def get(self):
+        
+        json_out = json.dumps({
+            'config': config.config_tree
+        }, sort_keys=True, indent=4)
 
 
-#         self.set_header('Content-Type', 'application/json')
-#         self.write(json_out)
+        self.set_header('Content-Type', 'application/json')
+        self.write(json_out)
+
+class PresetHandler(web.RequestHandler):
+    def get(self):
+        
+        json_out = json.dumps({
+            'presets': config.config_tree['presets']
+        }, sort_keys=True, indent=4)
+
+
+        self.set_header('Content-Type', 'application/json')
+        self.write(json_out)
 
 class SocketHandler(websocket.WebSocketHandler):
     clients = set()
@@ -61,7 +69,8 @@ def twisted():
     app = web.Application([
         (r'/', IndexHandler),
         # (r'/ws', SocketHandler),
-        # (r'/data', JsonHandler),
+        (r'/data', JsonHandler),
+        (r'/api/preset', PresetHandler),
         (r'/static/(.*)', web.StaticFileHandler, {'path': config.app_dir('static')})
     ])
     # https://github.com/tornadoweb/tornado/issues/2308
