@@ -20,7 +20,6 @@ def color():
     return (random_color(), random_color(), random_color())
 
 
-
 def led_init():
     n_dots = len(dots)
     for dot in range(n_dots):

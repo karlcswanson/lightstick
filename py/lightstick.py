@@ -5,11 +5,13 @@ import midi
 import config
 import tornado_server
 import led
+import osc
 
 def main():
     config.config()
     midi.keyboard_init()
     led.led_init()
+    osc.OSCInit()
     print(config.config_tree)
 
     web_t = threading.Thread(target=tornado_server.twisted)
