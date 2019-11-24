@@ -42,7 +42,7 @@ def update_colors():
         if key.velocity > 0:
             dots[key.note] = calc_color(preset['note_off'], preset['note_on'], key.ratio(preset['attack']))
         if key.velocity == 0:
-            dots[key.note] = calc_color(preset['note_on'], preset['note_off'], key.ratio(preset['release']))
+            dots[key.note] = calc_color(preset['note_on'], preset['note_off'], key.ratio(preset['decay']))
 
 
 def current_preset():

@@ -132,3 +132,22 @@ def write_json_config(data):
 
 def save_current_config():
     return write_json_config(config_tree)
+
+
+def get_preset_by_number(preset_number):
+    for preset in config_tree['presets']:
+        if preset['preset'] == int(preset_number):
+            return preset
+    return None
+
+def update_preset(data):
+    preset = get_preset_by_number(data['preset'])
+    
+
+    preset['title'] = data['title']
+    preset['attack'] = data['attack']
+    preset['decay'] = data['decay']
+    preset['note_off'] = data['note_off']
+    preset['note_on'] = data['note_on']
+
+    save_current_config()

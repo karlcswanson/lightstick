@@ -34,6 +34,12 @@ class PresetHandler(web.RequestHandler):
 
         self.set_header('Content-Type', 'application/json')
         self.write(json_out)
+    
+    def post(self):
+        data = json.loads(self.request.body)
+        config.update_preset(data)
+        print(data)
+        self.write(data)
 
 class SocketHandler(websocket.WebSocketHandler):
     clients = set()
