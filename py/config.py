@@ -151,3 +151,10 @@ def update_preset(data):
     preset['note_on'] = data['note_on']
 
     save_current_config()
+
+def preset_select(data):
+    preset = int(data['current_preset'])
+
+    if get_preset_by_number(preset):
+        config_tree.current_preset = preset
+        save_current_config()

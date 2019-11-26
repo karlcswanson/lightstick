@@ -41,6 +41,16 @@ class PresetHandler(web.RequestHandler):
         print(data)
         self.write(data)
 
+class PresetChooser(web.WebSocketHandler):
+    def get(self):
+        self.write('hi')
+    
+     def post(self):
+        data = json.loads(self.request.body)
+        config.preset_select(data)
+        print(data)
+        self.write(data)
+
 class SocketHandler(websocket.WebSocketHandler):
     clients = set()
 
