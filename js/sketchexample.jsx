@@ -11,13 +11,8 @@ export class SketchExample extends React.Component {
       displayColorPicker: false,
       color: this.props.color
     };
-    // this.handleChange = this.handleChange.bind(this);
   }
-  // state = {
-  //   displayColorPicker: false,
-  //   color: this.props.color
-  // }
-
+ 
   handleClick = () => {
     this.setState({ displayColorPicker: !this.state.displayColorPicker })
   };
