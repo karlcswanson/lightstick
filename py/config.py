@@ -156,5 +156,5 @@ def preset_select(data):
     preset = int(data['current_preset'])
 
     if get_preset_by_number(preset):
-        config_tree.current_preset = preset
+        config_tree['current_preset'] = preset
         save_current_config()

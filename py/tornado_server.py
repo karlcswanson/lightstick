@@ -41,11 +41,11 @@ class PresetHandler(web.RequestHandler):
         print(data)
         self.write(data)
 
-class PresetChooser(web.WebSocketHandler):
+class PresetChooser(web.RequestHandler):
     def get(self):
         self.write('hi')
     
-     def post(self):
+    def post(self):
         data = json.loads(self.request.body)
         config.preset_select(data)
         print(data)
@@ -87,6 +87,7 @@ def twisted():
         # (r'/ws', SocketHandler),
         (r'/data', JsonHandler),
         (r'/api/preset', PresetHandler),
+        (r'/api/preset_select', PresetChooser),
         (r'/static/(.*)', web.StaticFileHandler, {'path': config.app_dir('static')})
     ])
     # https://github.com/tornadoweb/tornado/issues/2308

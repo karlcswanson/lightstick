@@ -25,14 +25,14 @@ class SettingsPage extends React.Component {
   }
 
   componentDidMount() {
-    fetch("api/preset")
+    fetch("data")
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
             isLoaded: true,
-            presets: result.presets,
-            current_preset: result.current_preset
+            presets: result.config.presets,
+            current_preset: result.config.current_preset
           });
         },
         // Note: it's important to handle errors here
@@ -48,7 +48,7 @@ class SettingsPage extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, presets } = this.state;
+    const { error, isLoaded, presets, current_preset } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
