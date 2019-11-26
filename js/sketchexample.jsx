@@ -5,10 +5,18 @@ import reactCSS from 'reactcss'
 import { SketchPicker } from 'react-color'
 
 export class SketchExample extends React.Component {
-  state = {
-    displayColorPicker: false,
-    // color: { this.props.color}
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      displayColorPicker: false,
+      color: this.props.color
+    };
+    // this.handleChange = this.handleChange.bind(this);
+  }
+  // state = {
+  //   displayColorPicker: false,
+  //   color: this.props.color
+  // }
 
   handleClick = () => {
     this.setState({ displayColorPicker: !this.state.displayColorPicker })
@@ -18,12 +26,12 @@ export class SketchExample extends React.Component {
     this.setState({ displayColorPicker: false })
   };
 
+  
   handleChange = (color) => {
     this.setState({ color: color.rgb })
   };
 
   render() {
-
     const styles = reactCSS({
       'default': {
         color: {

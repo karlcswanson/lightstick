@@ -3,9 +3,10 @@
 import React from 'react';
 
 import { SketchPicker } from 'react-color';
+import SketchExample from './sketchexample.jsx';
 
 function colorMap(color) {
-  return {'r': color[0], 'g': color[1], 'b': color[2]};
+  return {'r': color[0], 'g': color[1], 'b': color[2], 'a': 255};
 }
   
 function reverseColorMap(color) {
@@ -117,13 +118,13 @@ export class Preset extends React.Component {
         </form>
         
         <label>Note Off</label>
-        <SketchPicker
+        <SketchExample
           name="note_off"
           color={this.state.note_off}
           onChangeComplete={ (e) => this.handleColorChange('note_off', e) }
         />
         <label>Note On</label>
-        <SketchPicker
+        <SketchExample
           name="note_on"
           color={this.state.note_on}
           onChangeComplete={ (e) => this.handleColorChange('note_on', e) }
