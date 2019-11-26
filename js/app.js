@@ -9,22 +9,7 @@ import '../css/style.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { SketchPicker } from 'react-color';
-// import { SketchExample } from './sketchexample.jsx';
 
-// class ShoppingList extends React.Component {
-//     render() {
-//       return (
-//         <div className="shopping-list">
-//           <h1>Shopping List for {this.props.name}</h1>
-//           <ul>
-//             <li>Instagram</li>
-//             <li>WhatsApp</li>
-//             <li>Oculus</li>
-//           </ul>
-//         </div>
-//       );
-//     }
-//   }
 
 function colorMap(color) {
   return {'r': color[0], 'g': color[1], 'b': color[2]};
@@ -107,8 +92,8 @@ class Preset extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('An essay was submitted: ' + this.state.title);
     event.preventDefault();
+    this.postData();
   }
 
   postData() {
@@ -116,8 +101,8 @@ class Preset extends React.Component {
     let data = {
       preset: this.props.preset.preset,
       title: this.state.title,
-      attack: this.state.attack,
-      decay: this.state.decay,
+      attack: parseFloat(this.state.attack),
+      decay: parseFloat(this.state.decay),
       note_off: reverseColorMap(this.state.note_off),
       note_on: reverseColorMap(this.state.note_on)
     };
@@ -151,6 +136,11 @@ class Preset extends React.Component {
     this.setState({
       [name]: value
     });
+    setTimeout(() => {
+      this.postData();
+      console.log(this.state)
+    }, 125);
+    
   }
 
 
@@ -159,11 +149,27 @@ class Preset extends React.Component {
     return (
       <div className="preset">
         <form onSubmit={this.handleSubmit}>
-          <input name="title" value={this.state.title} onChange={this.handleInputChange} />
+          <input
+            name="title"
+            autoComplete="off"
+            value={this.state.title}
+            onChange={this.handleInputChange}
+          />
           <label>Attack:</label>
-          <input name="attack" value={this.state.attack} onChange={this.handleInputChange} />
+          <input
+            name="attack"
+            autoComplete="off"
+            value={this.state.attack}
+            onChange={this.handleInputChange}
+          />
           <label>Decay:</label>
-          <input name="decay" value={this.state.decay} onChange={this.handleInputChange} />
+          <input
+            name="decay"
+            autoComplete="off"
+            value={this.state.decay}
+            onChange={this.handleInputChange}
+          />
+          {/* <input type="submit" value="Submit" /> */}
         </form>
         
         <label>Note Off</label>

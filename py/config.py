@@ -145,8 +145,8 @@ def update_preset(data):
     
 
     preset['title'] = data['title']
-    preset['attack'] = data['attack']
-    preset['decay'] = data['decay']
+    preset['attack'] = float(data['attack'])
+    preset['decay'] = float(data['decay'])
     preset['note_off'] = data['note_off']
     preset['note_on'] = data['note_on']
 

@@ -9,3 +9,4 @@ package-lock.json
 static/fonts/*
 static/*.js*
 config.json
+.git-old/*
