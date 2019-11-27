@@ -40,9 +40,17 @@ def update_colors():
     # print('preset out: {}'.format(preset))
     for key in midi.KEYBOARD:
         if key.velocity > 0:
-            dots[key.note] = calc_color(preset['note_off'], preset['note_on'], key.ratio(preset['attack']))
+            try:
+                dots[key.note] = calc_color(preset['note_off'], preset['note_on'], key.ratio(preset['attack']))
+            except:
+                pass
+                # print('unmapped key')
         if key.velocity == 0:
-            dots[key.note] = calc_color(preset['note_on'], preset['note_off'], key.ratio(preset['decay']))
+            try:
+                dots[key.note] = calc_color(preset['note_on'], preset['note_off'], key.ratio(preset['decay']))
+            except:
+                pass
+                # print('unmapped key')
 
 
 def current_preset():
