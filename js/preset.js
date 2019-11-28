@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -100,38 +101,37 @@ export class Preset extends React.Component {
       <Card>
         <CardContent>
           <TextField
-              label="Preset Name"
-              name="title"
-              autoComplete="off"
-              value={this.state.title}
-              onChange={this.handleInputChange}
-            />
+            label="Preset Name"
+            name="title"
+            autoComplete="off"
+            value={this.state.title}
+            onChange={this.handleInputChange}
+          />
             
-            <TextField
-              label="Attack"
-              name="attack"
-              autoComplete="off"
-              value={this.state.attack}
-              onChange={this.handleInputChange}
-            />
+          <TextField
+            label="Attack"
+            name="attack"
+            autoComplete="off"
+            value={this.state.attack}
+            onChange={this.handleInputChange}
+          />
             
-            <TextField
-              label="Decay"
-              name="decay"
-              autoComplete="off"
-              value={this.state.decay}
-              onChange={this.handleInputChange}
-            />
+          <TextField
+            label="Decay"
+            name="decay"
+            autoComplete="off"
+            value={this.state.decay}
+            onChange={this.handleInputChange}
+          />
             
           
-          
-          <label>Note Off</label>
+          <InputLabel shrink>Note Off</InputLabel>
           <SketchExample
             name="note_off"
             color={this.state.note_off}
             onChangeComplete={ (e) => this.handleColorChange('note_off', e) }
           />
-          <label>Note On</label>
+          <InputLabel shrink>Note On</InputLabel>
           <SketchExample
             name="note_on"
             color={this.state.note_on}

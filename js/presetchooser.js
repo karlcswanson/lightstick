@@ -74,7 +74,6 @@ export class PresetChooser extends React.Component {
           </FormControl>
         </CardContent>
       </Card>
-      
     );
   }
 }
