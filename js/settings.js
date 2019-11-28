@@ -54,7 +54,6 @@ export class SettingsPage extends React.Component {
           <PresetChooser presets={this.state.presets} current_preset={this.state.current_preset} />
           <PresetList presets={this.state.presets} />
         </div>
-        
       );
     }
   }

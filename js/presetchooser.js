@@ -3,6 +3,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
+
 export class PresetChooser extends React.Component {
   constructor(props) {
     super(props);
@@ -42,21 +50,31 @@ export class PresetChooser extends React.Component {
 
   render() {
     return(
-      <div>
-        <label>Current Preset:</label>
-          <select name="current_preset" value={this.state.current_preset} onChange={this.handleInputChange} >
-            {
-              this.state.presets.map(preset =>
-                <option
-                  // selected={this.state.current_preset == preset.preset}
-                  key={preset.preset}
-                  value={preset.preset}>
-                    {preset.preset}: {preset.title}
-                </option>
-              )
-            }
-          </select>
-      </div>
+      <Card>
+        <CardContent>
+          <FormControl>
+            <InputLabel shrink>Current Preset</InputLabel>
+            <NativeSelect
+              name="current_preset"
+              value={this.state.current_preset}
+              onChange={this.handleInputChange}
+            >
+              {
+                
+                this.state.presets.map(preset =>
+                  <option
+                    // selected={this.state.current_preset == preset.preset}
+                    key={preset.preset}
+                    value={preset.preset}>
+                      {preset.preset}: {preset.title}
+                  </option>
+                )
+              }
+            </NativeSelect>
+          </FormControl>
+        </CardContent>
+      </Card>
+      
     );
   }
 }

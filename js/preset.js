@@ -2,6 +2,11 @@
 
 import React from 'react';
 
+import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
 import { SketchPicker } from 'react-color';
 import SketchExample from './sketchexample.jsx';
 
@@ -92,44 +97,48 @@ export class Preset extends React.Component {
 
   render() {
     return (
-      <div className="preset">
-        <form onSubmit={this.handleSubmit}>
-          <input
-            name="title"
-            autoComplete="off"
-            value={this.state.title}
-            onChange={this.handleInputChange}
+      <Card>
+        <CardContent>
+          <TextField
+              label="Preset Name"
+              name="title"
+              autoComplete="off"
+              value={this.state.title}
+              onChange={this.handleInputChange}
+            />
+            
+            <TextField
+              label="Attack"
+              name="attack"
+              autoComplete="off"
+              value={this.state.attack}
+              onChange={this.handleInputChange}
+            />
+            
+            <TextField
+              label="Decay"
+              name="decay"
+              autoComplete="off"
+              value={this.state.decay}
+              onChange={this.handleInputChange}
+            />
+            
+          
+          
+          <label>Note Off</label>
+          <SketchExample
+            name="note_off"
+            color={this.state.note_off}
+            onChangeComplete={ (e) => this.handleColorChange('note_off', e) }
           />
-          <label>Attack:</label>
-          <input
-            name="attack"
-            autoComplete="off"
-            value={this.state.attack}
-            onChange={this.handleInputChange}
+          <label>Note On</label>
+          <SketchExample
+            name="note_on"
+            color={this.state.note_on}
+            onChangeComplete={ (e) => this.handleColorChange('note_on', e) }
           />
-          <label>Decay:</label>
-          <input
-            name="decay"
-            autoComplete="off"
-            value={this.state.decay}
-            onChange={this.handleInputChange}
-          />
-          {/* <input type="submit" value="Submit" /> */}
-        </form>
-        
-        <label>Note Off</label>
-        <SketchExample
-          name="note_off"
-          color={this.state.note_off}
-          onChangeComplete={ (e) => this.handleColorChange('note_off', e) }
-        />
-        <label>Note On</label>
-        <SketchExample
-          name="note_on"
-          color={this.state.note_on}
-          onChangeComplete={ (e) => this.handleColorChange('note_on', e) }
-        />
-      </div>
+        </CardContent>
+      </Card>
     );
   }
 }
