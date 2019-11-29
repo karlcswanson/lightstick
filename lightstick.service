@@ -1,0 +1,16 @@
+[Unit]
+Description=Lightstick Service
+After=network.target
+
+[Service]
+Environment=LIGHTSTICK_PORT=80
+ExecStart=/usr/bin/python3 -u py/lightstick.py
+WorkingDirectory=/home/pi/lightstick
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
