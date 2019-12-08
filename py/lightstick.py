@@ -17,10 +17,12 @@ def main():
     web_t = threading.Thread(target=tornado_server.twisted)
     midi_t = threading.Thread(target=midi.midi_loop)
     led_t = threading.Thread(target=led.led_loop)
+    osc_t = threading.Thread(target=osc.osc_loop)
 
     web_t.start()
     midi_t.start()
     led_t.start()
+    osc_t.start()
 
 if __name__ == '__main__':
     main()

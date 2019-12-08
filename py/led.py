@@ -13,7 +13,7 @@ NOTE_ON_COLOR = (30, 30, 30)
 ATTACK = 1.0
 RELEASE = .5
 
-dots = dotstar.DotStar(board.SCK, board.MOSI, 25, brightness=1)
+dots = dotstar.DotStar(board.SCK, board.MOSI, 25, brightness=0.1)
 # dots = dotstar.DotStar(board.SCK, board.MOSI, 25)
 
 def random_color():

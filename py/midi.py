@@ -51,6 +51,7 @@ def keyboard_init():
 def midi_loop():
     while True:
         msg = inport.receive()
+        print(msg)
         if msg.type in ['note_on', 'note_off']:
             note = KEYBOARD[msg.note]
 
