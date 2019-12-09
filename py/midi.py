@@ -8,7 +8,45 @@ import led
 
 KEYBOARD = []
 
+SUSTAIN = []
+
 inport = mido.open_input('MPKmini2:MPKmini2 MIDI 1 20:0')
+
+class midiControlChange:
+    def __init__(self, control_number):
+        self.control_value = 0
+        self.control_number = control_number
+        self.timestamp = time.time()
+    
+    def set_val(self, control_value):
+        self.control_value = control_value
+        self.timestamp = time.time()
+
+class sustain(midiControlChange):
+    def __init__(self):
+        super().__init__(64)
+        self.note_hold_list = []
+
+    def hold_note_off(self,note):
+        self.note_hold_list.append(note)
+
+    def release_notes(self):
+        for note in self.note_hold_list:
+            note.note_off()
+        del self.note_hold_list[:]
+
+    def set_val(self, control_value):
+        self.control_value = control_value
+        self.timestamp = time.time()
+
+        if control_value == 0:
+            self.release_notes()
+    
+    def pedal_state(self):
+        if (self.control_value == 127):
+            return 'PRESSED'
+        return 'RELEASED'
+
 
 
 class note:
@@ -41,9 +79,12 @@ class note:
 
 
 def keyboard_init():
+    global SUSTAIN
     # for i in range (0, 87):
     for i in range(0, 87):
         KEYBOARD.append(note(i))
+    
+    SUSTAIN = sustain()
     print(KEYBOARD)
 
 
@@ -51,7 +92,12 @@ def keyboard_init():
 def midi_loop():
     while True:
         msg = inport.receive()
-        print(msg)
+        # print(msg)
+        if msg.type == 'control_change':
+            if msg.control == 64:
+                SUSTAIN.set_val(msg.value)
+                print("Sustain: {}".format(SUSTAIN.control_value))
+
         if msg.type in ['note_on', 'note_off']:
             note = KEYBOARD[msg.note]
 
@@ -59,17 +105,10 @@ def midi_loop():
                 note.note_on(msg.velocity)
 
             if msg.type == 'note_off':
-                note.note_off()
+                if (SUSTAIN.pedal_state() == 'PRESSED'):
+                    SUSTAIN.hold_note_off(note)
+                else:
+                    note.note_off()
 
             print(KEYBOARD[msg.note])
             print(msg.bytes())
-        
-        
-        # out = ( 1,)
-        # out = out + tuple(msg.bytes())
-
-        # out = bytes(out)
-        # if isinstance(out, tuple) and len(out) == 4:
-        #     print("is tupple")
-        # print('output: {}'.format(out))
-        # osc.server.send('/midi', out)
