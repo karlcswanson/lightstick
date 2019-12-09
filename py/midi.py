@@ -81,7 +81,7 @@ class note:
 def keyboard_init():
     global SUSTAIN
     # for i in range (0, 87):
-    for i in range(0, 87):
+    for i in range(0, 88):
         KEYBOARD.append(note(i))
     
     SUSTAIN = sustain()
@@ -99,16 +99,17 @@ def midi_loop():
                 print("Sustain: {}".format(SUSTAIN.control_value))
 
         if msg.type in ['note_on', 'note_off']:
-            note = KEYBOARD[msg.note]
+            if msg.note < 88:
+                note = KEYBOARD[msg.note]
 
-            if msg.type == 'note_on':
-                note.note_on(msg.velocity)
+                if msg.type == 'note_on':
+                    note.note_on(msg.velocity)
 
-            if msg.type == 'note_off':
-                if (SUSTAIN.pedal_state() == 'PRESSED'):
-                    SUSTAIN.hold_note_off(note)
-                else:
-                    note.note_off()
+                if msg.type == 'note_off':
+                    if (SUSTAIN.pedal_state() == 'PRESSED'):
+                        SUSTAIN.hold_note_off(note)
+                    else:
+                        note.note_off()
 
-            print(KEYBOARD[msg.note])
-            print(msg.bytes())
+                print(KEYBOARD[msg.note])
+                print(msg.bytes())
