@@ -52,8 +52,8 @@ def update_colors_new():
     start_led = config.config_tree['start_led']
 
     for i in range(0, 88):
-        dots[(2*i) + start_led] = color_output(midi.KEYBOARD[i], preset)
-        dots[(2*i) + start_led + 1] = color_output(midi.KEYBOARD[i], preset)
+        dots[(2*i) + start_led] = color_output(midi.KEYBOARD[i + 21], preset)
+        dots[(2*i) + start_led + 1] = color_output(midi.KEYBOARD[i + 21], preset)
     dots.show()
 
 def current_preset():

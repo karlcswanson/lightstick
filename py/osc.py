@@ -39,7 +39,7 @@ class OSCConnection:
 
 def update_osc():
     for key in midi.KEYBOARD:
-        server.send('/d3/layer/{}/brightness'.format(key.note + 1), key.velocity*2)
+        server.send('/d3/layer/{}/brightness'.format(key.note), key.velocity*2)
 
 
 def osc_loop():
