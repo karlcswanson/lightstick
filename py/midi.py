@@ -2,16 +2,24 @@ import time
 import random
 
 import mido
-import osc
-
-import led
 
 KEYBOARD = []
 
 SUSTAIN = []
 
 # inport = mido.open_input('MPKmini2:MPKmini2 MIDI 1 20:0')
-inport = mido.open_input('Scarlett 2i4 USB MIDI 1')
+# inport = mido.open_input('Scarlett 2i4 USB MIDI 1')
+
+def get_midi_input():
+    input_list = mido.get_input_names()
+    if 'MPKmini2:MPKmini2 MIDI 1 20:0':
+        return 'MPKmini2:MPKmini2 MIDI 1 20:0'
+    if 'Scarlett 2i4 USB:Scarlett 2i4 USB MIDI 1 24:0':
+        return 'Scarlett 2i4 USB:Scarlett 2i4 USB MIDI 1 24:0'
+    return ''
+
+inport = mido.open_input(get_midi_input())
+
 
 class midiControlChange:
     def __init__(self, control_number):
