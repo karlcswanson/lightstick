@@ -13,7 +13,7 @@ NOTE_ON_COLOR = (30, 30, 30)
 ATTACK = 1.0
 RELEASE = .5
 
-dots = dotstar.DotStar(board.SCK, board.MOSI, 180, brightness=0.1, auto_write=False)
+dots = dotstar.DotStar(board.SCK, board.MOSI, 185, brightness=0.1, auto_write=False)
 # dots = dotstar.DotStar(board.SCK, board.MOSI, 25)
 
 def random_color():
@@ -67,4 +67,4 @@ def current_preset():
 def led_loop():
     while True:
         update_colors_new()
-        time.sleep(.01)
+        time.sleep(.05)

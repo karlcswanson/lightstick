@@ -45,4 +45,4 @@ def update_osc():
 def osc_loop():
     while True:
         update_osc()
-        time.sleep(.01)
+        time.sleep(.05)
