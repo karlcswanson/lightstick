@@ -12,9 +12,9 @@ SUSTAIN = []
 
 def get_midi_input():
     input_list = mido.get_input_names()
-    if 'MPKmini2:MPKmini2 MIDI 1 20:0':
+    if 'MPKmini2:MPKmini2 MIDI 1 20:0' in input_list:
         return 'MPKmini2:MPKmini2 MIDI 1 20:0'
-    if 'Scarlett 2i4 USB:Scarlett 2i4 USB MIDI 1 24:0':
+    if 'Scarlett 2i4 USB:Scarlett 2i4 USB MIDI 1 24:0' in input_list:
         return 'Scarlett 2i4 USB:Scarlett 2i4 USB MIDI 1 24:0'
     return ''
 
