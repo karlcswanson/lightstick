@@ -67,4 +67,4 @@ def current_preset():
 def led_loop():
     while True:
         update_colors_new()
-        time.sleep(.05)
+        time.sleep(.02)
