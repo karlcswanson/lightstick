@@ -8,8 +8,6 @@ KEYBOARD = []
 
 SUSTAIN = []
 
-# inport = mido.open_input('MPKmini2:MPKmini2 MIDI 1 20:0')
-# inport = mido.open_input('Scarlett 2i4 USB MIDI 1')
 
 def get_midi_input():
     input_list = mido.get_input_names()
@@ -97,7 +95,6 @@ class note:
 
 def keyboard_init():
     global SUSTAIN
-    # for i in range (0, 87):
     for i in range(0, 128):
         KEYBOARD.append(note(i))
 

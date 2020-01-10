@@ -108,7 +108,6 @@ def config():
     args = parse_args()
     logging_init()
     read_json_config(config_file())
-    # influxdb_api.setup()
     logging.info('Starting lightstick {}'.format(config_tree['lightstick_version']))
 
 
