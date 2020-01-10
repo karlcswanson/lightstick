@@ -121,14 +121,14 @@ def midi_loop():
             if msg.type == 'note_on':
                 if msg.velocity > 0:
                     note.note_on(msg.velocity)
-                    osc.server.send('/d3/layer/{}/brightness'.format(msg.note), msg.velocity*2)
+                    #osc.server.send('/d3/layer/{}/brightness'.format(msg.note), msg.velocity*2)
                 if msg.velocity == 0:
                     note.note_off()
-                    osc.server.send('/d3/layer/{}/brightness'.format(msg.note), 0)
+                    #osc.server.send('/d3/layer/{}/brightness'.format(msg.note), 0)
 
             if msg.type == 'note_off':
                 note.note_off()
-                osc.server.send('/d3/layer/{}/brightness'.format(msg.note), 0)
+                #osc.server.send('/d3/layer/{}/brightness'.format(msg.note), 0)
 
             # print(KEYBOARD[msg.note])
             # print(msg.bytes())

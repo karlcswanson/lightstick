@@ -13,7 +13,7 @@ NOTE_ON_COLOR = (30, 30, 30)
 ATTACK = 1.0
 RELEASE = .5
 
-dots = dotstar.DotStar(board.SCK, board.MOSI, 185, brightness=0.1, auto_write=False)
+dots = dotstar.DotStar(board.SCK, board.MOSI, 185, brightness=0.5, auto_write=False)
 # dots = dotstar.DotStar(board.SCK, board.MOSI, 25)
 
 def random_color():
@@ -39,7 +39,10 @@ def update_colors():
     preset = current_preset()
     for key in midi.KEYBOARD:
         dots[key.note] = color_output(key, preset)
-    dots.show()
+    try:
+        dots.show()
+    except:
+        print('OH NO!')
 
 def color_output(key, preset):
     if key.velocity > 0:
@@ -52,9 +55,15 @@ def update_colors_new():
     start_led = config.config_tree['start_led']
 
     for i in range(0, 88):
-        dots[(2*i) + start_led] = color_output(midi.KEYBOARD[i + 21], preset)
-        dots[(2*i) + start_led + 1] = color_output(midi.KEYBOARD[i + 21], preset)
-    dots.show()
+        try:
+            dots[(2*i) + start_led] = color_output(midi.KEYBOARD[i + 21], preset)
+            dots[(2*i) + start_led + 1] = color_output(midi.KEYBOARD[i + 21], preset)
+        except:
+            print('OH No 2.0')
+    try:
+        dots.show()
+    except:
+        print('0hno 3.0')
 
 def current_preset():
     preset_number = config.config_tree['current_preset']
