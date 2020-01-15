@@ -5,7 +5,7 @@ This is a partially complete solution to drive dotstar LED strips via MIDI.  Muc
 Wire the LED strip clock and data pins to SCK and MOSI on the Pi.  Check out [pinout.xyz](https://pinout.xyz) for more information.
 
 ## Installation
-The installation is fairly similar to micboard.
+The installation is similar to micboard.
 
 
 Install git, python3-pip, and Node.js
