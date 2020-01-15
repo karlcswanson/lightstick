@@ -1,0 +1,90 @@
+{
+  "current_preset": 1,
+  "lightstick_version": "1.0.0",
+  "osc_port": 7401,
+  "osc_server": "10.1.1.4",
+  "port": 8512,
+  "presets": [
+    {
+      "attack": 0.0,
+      "decay": 0.0,
+      "note_off": [
+        0,
+        0,
+        0
+      ],
+      "note_on": [
+        0,
+        0,
+        0
+      ],
+      "preset": 0,
+      "title": "Blank"
+    },
+    {
+      "attack": 0.0,
+      "decay": 0.05,
+      "note_off": [
+        0,
+        0,
+        0
+      ],
+      "note_on": [
+        23,
+        122,
+        231
+      ],
+      "preset": 1,
+      "title": "Main Preset"
+    },
+    {
+      "attack": 0.1,
+      "decay": 0.2,
+      "note_off": [
+        10,
+        0,
+        10
+      ],
+      "note_on": [
+        189,
+        23,
+        151
+      ],
+      "preset": 2,
+      "title": "Movement 2"
+    },
+    {
+      "attack": 0.0,
+      "decay": 0.0,
+      "note_off": [
+        0,
+        0,
+        0
+      ],
+      "note_on": [
+        3,
+        85,
+        231
+      ],
+      "preset": 3,
+      "title": "Preset 3"
+    },
+    {
+      "attack": 0.1,
+      "decay": 10.0,
+      "note_off": [
+        0,
+        0,
+        0
+      ],
+      "note_on": [
+        136,
+        0,
+        255
+      ],
+      "preset": 4,
+      "title": "Movement 4"
+    }
+  ],
+  "start_led": 3
+}
