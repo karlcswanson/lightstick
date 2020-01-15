@@ -1,5 +1,8 @@
 # Lightstick
-This is a partially complete solution to drive dotstar LED strips from MIDI data.  Much of this code was tested and fixed on a stage between rehearsals.  It works, but can be a little buggy.
+This is a partially complete solution to drive dotstar LED strips via MIDI.  Much of this code was tested and fixed on a stage between rehearsals.  It works, but can be buggy.
+
+## Hardware
+Wire the LED strip clock and data pins to SCK and MOSI on the Pi.  Check out [pinout.xyz](https://pinout.xyz) for more information.
 
 ## Installation
 The installation is fairly similar to micboard.
